@@ -22,9 +22,9 @@
     <![endif]-->
   </head>
   <body>
-
 <!--navigacija-meni-->
-    <nav class="navbar navbar-inverse">
+   
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -34,15 +34,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>LA M</b>irko</a>
+          <a class="navbar-brand" href="#vrh"><b>LA M</b>irko</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Kaj nudimo</a></li>
-            <li><a href="#">Naroči se</a></li>
-            <li><a href="#">FAQ</a></li>
+<!--PROBLEM   ko gre na link, npr. #naroci-se se premakne 27px previsoko oz. to zakrije -->
+            <li><a href="#kaj-nudimo">Kaj nudimo</a></li>
+            <li><a href="#naroci-se">Naroči se</a></li>
+            <li><a href="#pogosta">FAQ</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">O nas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -50,15 +51,16 @@
                 <li><a href="#">Vodstvo</a></li>
                 <li><a href="#">Nagrade</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Objave v medijih</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal">Objave v medijih</a></li>
               </ul>
             </li>
-            <<li>
+            <li><a href="#">Kontakt</a></li>
+            <li>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Išči">
                     </div>
-                    <button type="submit" class="btn btn-default">Oddaj</button>
+                    <button type="submit" class="btn btn-default">♂</button>
                 </form> 
             </li>
           </ul>
@@ -66,10 +68,11 @@
       </div><!-- /.container-fluid -->
     </nav>  
 
+
 <!--carousel -->
-    <div id="carousel-example-generic" class="carousel slide karu-position" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide karu-position" data-ride="carousel" data-interval="100000">
       <!-- Indicators -->
-      <ol class="carousel-indicators" style"border-radius= 0 px">
+      <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
@@ -80,21 +83,22 @@
         <div class="item active">
           <img src="images/lasje000.jpg" alt="...">
           <div class="carousel-caption">
-             <h1 class=napis-carousel><b>L</b>asni <b>A</b>telje</h1>
-             <h1 class=napis-mirko>Mirko</h1>             
+             <h1 class=karu1-atelje><b>L</b>asni <b><em>A</em></b>telje</h1>
+             <h1 class=karu1-mirko>Mirko</h1>             
           </div>
         </div>
         <div class="item">
           <img src="images/lasje001.jpg" alt="...">
           <div class="carousel-caption">
-            <h1 class="karu2"><em>♂</em></h1>
+            <h1 class="karu2">Striženje<br>Barvanje<br>Nega las<br>Manikura<br></h1>
+<!--PROBLEM            <img src="images/nega.png" style="width: 20px">     NE UPOŠTEVA ŠIRINE ZA SLIKO-->
           </div>
         </div>
          <div class="item">
           <img src="images/lasje002.jpg" alt="...">
           <div class="carousel-caption">
-            <h1 class=napis-mirko>Vaaaau!</h1>
-            <h1 class=napis-mirko style="font-size: 3em">ampak ščž pa ne dela :-[</h1>             
+            <h1 class=karu3>Vaaaau!</h1>
+            <h1 style="font-size: 2.5vw">ampak ščž pa na Firefox-u ne dela <br>:-[</h1>             
              
           </div>
         </div>
@@ -110,12 +114,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    
+
 <!-- kaj nudimo 3x slika -->
-
-
-
-<ul class="ch-grid">
+<legend> <h2>Kaj nudimo</h2></legend>
+<ul id="kaj-nudimo" class="ch-grid">
 	<li>
 		<div class="ch-item ch-img-1">
 			<div class="ch-info">
@@ -143,9 +145,154 @@
 </ul>      
       
 <!-- naroči se -->
-      
+<legend id="naroci-se"> <h2>Naroči se</h2></legend>
+<div class="col-md-2"></div>    
+<div class="col-md-4">
+<form id="naroci-se">
+<fieldset>    
+    <div class="form-group">
+      <label class="control-label" for="textinput"></label>  
+      <input id="ime" name="textinput" type="text" placeholder="Ime in priimek" class="form-control input-md" required="" oninvalid="this.setCustomValidity('Pozabili ste vpisati ime!')">
+      <input id="telefon" name="textinput" type="text" placeholder="Tel. številka" class="form-control input-md" required="">
+      <p style="margin: 0 auto; width: 300px">Izberi termin: </p>
+      <label class="control-label" for="selectbasic" style="position: absolute; margin: -10px"></label>
+        <select id="termin" name="selectbasic" class="form-control">
+          <option value="1">Zjutraj</option>
+          <option value="">Dopoldan</option>
+          <option value="">Opoldan</option>
+          <option value="">Popoldan</option>
+          <option value="">Zvečer</option>
+        </select>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Strinjam se, da je Mirko najboljši frizer</label>
+    </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <div class="form-group center">
+    <label class="control-label" for="singlebutton"></label>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Pošlji</button>
+    </div>
+</div>
+</fieldset>
+</form>
+
+<div class="col-md-4">    
+    <table class="table table-hover">
+      <tr>
+        <td><b>Dan</b></td>
+        <td><b>Delovni čas</b></td> 
+      </tr>
+      <tr>
+        <td>Ponedeljek</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Torek</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Sreda</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Četrtek</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Petek</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Sobota</td>
+        <td>8.00-16.00</td> 
+      </tr>
+        <tr>
+        <td>Nedelja</td>
+        <td>8.00-16.00</td> 
+      </tr>
+    </table>
+</div>
+<div class="col-md-2"></div>    
+
+<!-- Pogosta vprašanja -->
+<div class="col-md-12">
+  <legend> <h2 id="pogosta">Pogosta vprašanja</h2></legend>
+
+     <div class="list-group pogosta">
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Kakšen je salon in ekipa</h4>
+        <p class="list-group-item-text">Hair Studio is a unisex hairdressing Salon in Kingswinford, West Midlands.
+    The team of Hair Stylists offer a high standard of ladies hairdressing, men’s hairdressing and children’s hairdressing  to the surrounding areas and have been since 1998.
+    All stylists receive regular training in order to keep up to date with all the latest hair styles and hair colours, such as, Permanent, Semi Permanent, Ammonia Free colours and even 10 minute developing colours, there’s something for everyone. </p>
+      </a>
+     <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Ali sprejemate hišnje ljubljenčke?</h4>
+        <p class="list-group-item-text">If it’s a special occasion your attending then our long hair specialists can create that perfect ‘updo’ from Prom Hairstyles to Wedding Hairsstyles, 
+    So what ever style you’re looking for ,short hair style or long hairstyle we have the team of experts to help you achieve your desired look.</p>
+      </a>    
+     <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">Imate kakšne nagrade s tekmovanj?</h4>
+        <p class="list-group-item-text">If it’s a special occasion your attending then our long hair specialists can create that perfect ‘updo’ from Prom Hairstyles to Wedding Hairsstyles, 
+    So what ever style you’re looking for ,short hair style or long hairstyle we have the team of experts to help you achieve your desired look.</p>
+      </a>    
+    </div>   
+</div>    
+
+<!-- KONTAKT -->
+<div class="col-md-12">
+<legend> <h2 id="vprasanja">Kontakt</h2></legend>
+</div>
+<div class="col-md-3"></div>    
+<div class="col-md-2">
+<p>Mirko Škarjeroki s.p. <br>Frizerska ulica 6 <br>6000 Koper <br>DŠ: SI55557770 <br>Tel.: 06/56504 <br>E-pošta: mirko@lamirko.si <br></p>
+</div>
+
+   <div  class="col-md-2 carousel" data-ride="carousel" data-interval="1000">
+      <div class="carousel-inner">
+        <div class="item active mini-karu">
+          <img src="images/strizenje.png" alt="...">
+        </div>
+        <div class="item mini-karu">
+          <img src="images/barvanje.png" alt="...">
+        </div>
+         <div class="item mini-karu">
+          <img src="images/nega.png" alt="...">
+        </div>
+      </div>
+   </div>
+    
+<div class="col-md-2">
+<p style="text-align: right">Tole še ni link:<br>Kaj nudimo <br>Naroči se <br>FAQ <br>O nas <br>Kontakt</p>
+</div>
+
+<div class="col-md-3">
+</div>
+
+
+ 
+ 
+<!-- MODAL -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Objave v medijih</h4>
+      </div>
+      <div class="modal-body">
+        Hairdressing as an occupation dates back thousands of years. Ancient art drawings and paintings have been discovered depicting people working on other persons hair. Greek writers Aristophanes and Homer both mention hairdressing in their writings. In Africa, it was believed in some cultures that a person's spirit occupied his or her hair, giving hairdressers high status within these communities. The status of hairdressing encouraged many to develop their skills, and close relationships were built between hairdressers and their clients. Hours would be spent washing, combing, oiling, styling and ornamenting their hair. Men would work specifically on men, and women on other women. Before a master hairdresser died, they would give their combs and tools to a chosen successor during a special ceremony. In ancient Egypt, hairdressers had specially decorated cases to hold their tools, including lotions, scissors and styling materials. Barbers also worked as hairdressers, and wealthy men often had personal barbers within their home. With the standard of wig wearing within the culture, wigmakers were also trained as hairdressers. In ancient Rome and Greece household slaves and servants took on the role of hairdressers, including dyeing and shaving. Men who did not have their own private hair or shaving services would visit the local barbershop. Women had their hair maintained and groomed at their homes. Historical documentation is lacking regarding hairstylists from the 5th century till the 1300s. Hair care service grew in demand after a papal decree in 1092 demanded that all Roman Catholic clergymen remove their facial hair.
+    <img src="images/mirko.jpg" class="img-responsive" style="margin-top: 10px; width: 100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+        <button ype="button" class="btn btn-defaults">Pošlji naprej</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+   
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
